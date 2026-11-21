@@ -16,7 +16,6 @@ export class CaseStudyComponent {
   private api = inject(ApiService);
   private route = inject(ActivatedRoute);
 
-  // undefined = loading, null = not found
   project = toSignal(
     this.route.paramMap.pipe(
       map(p => p.get('slug') ?? ''),
