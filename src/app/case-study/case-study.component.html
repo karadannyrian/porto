@@ -21,36 +21,32 @@
 
     <nz-divider></nz-divider>
 
-    <section>
-      <h2>Context</h2>
+    <div class="ant-layout-content section-block">
+      <h2 nz-typography>Context</h2>
       <p>{{ p.context }}</p>
-    </section>
+    </div>
 
-    <section>
-      <h2>The challenge</h2>
+    <div class="ant-layout-content section-block">
+      <h2 nz-typography>The challenge</h2>
       <p>{{ p.challenge }}</p>
-    </section>
+    </div>
 
-    <section>
-      <h2>The solution</h2>
+    <div class="ant-layout-content section-block">
+      <h2 nz-typography>The solution</h2>
       <ul>@for (s of p.solution; track s) { <li>{{ s }}</li> }</ul>
       <app-architecture-diagram />
-    </section>
+    </div>
 
-    <section>
-      <h2>My role and contributions</h2>
+    <div class="ant-layout-content section-block">
+      <h2 nz-typography>My role and contributions</h2>
       <ul>@for (r of p.role; track r) { <li>{{ r }}</li> }</ul>
-    </section>
+    </div>
 
-    <section>
-      <h2>Outcome</h2>
+    <div class="ant-layout-content section-block">
+      <h2 nz-typography>Outcome</h2>
       <ul>@for (o of p.outcome; track o) { <li>{{ o }}</li> }</ul>
-    </section>
+    </div>
 
-    <section>
-      <h2>What I'd do differently</h2>
-      <ul>@for (l of p.lessons; track l) { <li>{{ l }}</li> }</ul>
-    </section>
 
     <div style="margin-top: 40px;">
       <a nz-button nzType="primary" routerLink="/" fragment="contact">

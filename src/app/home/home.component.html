@@ -1,5 +1,5 @@
 @if (profile(); as p) {
-<section class="hero">
+<div class="ant-layout-content hero">
   <h1>{{ p.name }}</h1>
   <p class="headline">{{ p.headline }}</p>
   <p class="value">{{ p.valueProp }}</p>
@@ -15,16 +15,15 @@
     </a>
     <a nz-button nzSize="large" routerLink="/" fragment="contact">Contact me</a>
   </div>
-</section>
+</div>
 } @else {
-<section class="hero">
-  <nz-alert nzType="info" nzMessage="Loading profile…" nzDescription="Is the mock API running on port 3000?"
-    nzShowIcon></nz-alert>
-</section>
+<div class="ant-layout-content hero">
+  <nz-alert nzType="info" nzMessage="Loading profile…" nzDescription="Is the mock API running on port 3000?" nzShowIcon></nz-alert>
+</div>
 }
 
-<section id="projects" aria-labelledby="projects-h">
-  <h2 id="projects-h">Projects</h2>
+<div id="projects" class="ant-layout-content section-block" aria-labelledby="projects-h">
+  <h2 id="projects-h" nz-typography>Projects</h2>
   <p class="lead">Four applications from one enterprise HR platform. Each one is under NDA, so the visuals are my own
     recreated illustrations and the case studies leave out client details.</p>
   <ul class="grid">
@@ -90,10 +89,10 @@
     </li>
     }
   </ul>
-</section>
+</div>
 
-<section id="architecture" aria-labelledby="arch-h">
-  <h2 id="arch-h">How I build</h2>
+<div id="architecture" class="ant-layout-content section-block" aria-labelledby="arch-h">
+  <h2 id="arch-h" nz-typography>How I build</h2>
   <p class="lead">All four apps share one architecture. This is the pattern, drawn and written for this portfolio.</p>
   <app-architecture-diagram />
   <dl class="patterns">
@@ -104,10 +103,10 @@
   </dl>
   <p class="label">Illustrative pattern — not production client code.</p>
   <pre tabindex="0"><code>{{ snippet }}</code></pre>
-</section>
+</div>
 
-<section id="stack" aria-labelledby="stack-h">
-  <h2 id="stack-h">Tech stack</h2>
+<div id="stack" class="ant-layout-content section-block" aria-labelledby="stack-h">
+  <h2 id="stack-h" nz-typography>Tech stack</h2>
   <div class="stack">
     @for (col of stack(); track col.id) {
     <nz-card [nzTitle]="col.title" [nzBordered]="true">
@@ -119,11 +118,11 @@
     </nz-card>
     }
   </div>
-</section>
+</div>
 
 @if (profile(); as p) {
-<section id="about" aria-labelledby="about-h">
-  <h2 id="about-h">About and availability</h2>
+<div id="about" class="ant-layout-content section-block" aria-labelledby="about-h">
+  <h2 id="about-h" nz-typography>About and availability</h2>
   <p class="bio">{{ p.bio }}</p>
   <dl class="facts">
     <dt>Availability</dt>
@@ -136,10 +135,10 @@
   <a nz-button [href]="p.cvUrl" download>
     <span nz-icon nzType="download"></span> Download CV
   </a>
-</section>
+</div>
 
-<section id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h">Have a project? Let's talk.</h2>
+<div id="contact" class="ant-layout-content section-block" aria-labelledby="contact-h">
+  <h2 id="contact-h" nz-typography>Have a project? Let's talk.</h2>
   <p class="lead">Email is the fastest way to reach me. I reply within two working days.</p>
   <p class="links">
     <a nz-button nzType="link" [href]="'mailto:' + p.email">
@@ -149,5 +148,5 @@
     <a nz-button nzType="link" [href]="l.url" rel="noopener" target="_blank">{{ l.label }}</a>
     }
   </p>
-</section>
+</div>
 }

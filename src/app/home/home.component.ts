@@ -8,12 +8,10 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-
-type SendState = 'idle' | 'sending' | 'sent' | 'error';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @Component({
   selector: 'app-home',
@@ -26,10 +24,10 @@ type SendState = 'idle' | 'sending' | 'sent' | 'error';
     NzTagModule,
     NzBadgeModule,
     NzIconModule,
-    NzFormModule,
-    NzInputModule,
     NzAlertModule,
     NzDividerModule,
+    NzLayoutModule,
+    NzTypographyModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -57,5 +55,4 @@ export class ApiService {
     return throwError(() => new Error(error.message));
   }
 }`;
-
 }

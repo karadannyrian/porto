@@ -1,7 +1,7 @@
 :root {
   --bg: #eef0f4;
   --ink: #12141c;
-  --blue: #2b3af0;
+  --blue: #151e81;
   --line: #c9ceda;
   --display: 'Arial', system-ui, sans-serif;
 }
@@ -27,12 +27,16 @@ a {
   outline-offset: 3px;
 }
 
-section {
+section,
+.ant-layout-content.section-block,
+div.section-block {
   padding: 56px 0;
   border-top: 1px solid var(--line);
 }
 
-section.hero {
+section.hero,
+.ant-layout-content.hero,
+div.hero {
   border-top: 0;
 }
 

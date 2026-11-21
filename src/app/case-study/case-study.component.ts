@@ -10,6 +10,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @Component({
   selector: 'app-case-study',
@@ -23,6 +25,8 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzIconModule,
     NzDividerModule,
     NzAlertModule,
+    NzLayoutModule,
+    NzTypographyModule,
   ],
   templateUrl: './case-study.component.html',
   styleUrl: './case-study.component.scss',
