@@ -42,8 +42,7 @@ export class HomeComponent {
   patterns = toSignal(this.api.getArchitecture(), { initialValue: [] });
   stack = toSignal(this.api.getTechStack(), { initialValue: [] });
 
-  readonly snippet = `// Illustrative pattern — not production client code.
-@Injectable({ providedIn: 'root' })
+  readonly snippet = `@Injectable({ providedIn: 'root' })
 export class ApiService {
   constructor(private http: HttpClient) {}
 
