@@ -1,90 +1,22 @@
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="top">
-  <span class="mark">{{ profile()?.name ?? 'Portfolio' }}</span>
-  <nav aria-label="Primary">
-    <a href="#work">Work</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main id="main">
-  @if (profile(); as p) {
-  <section class="hero">
-    <h1>{{ p.name }}</h1>
-    <p class="role">{{ p.role }}, {{ p.location }}</p>
-    <p class="bio">{{ p.bio }}</p>
-    <p class="status" [class.on]="p.available">
-      <span class="dot" aria-hidden="true"></span>
-      {{ p.available ? 'Open to new projects' : 'Fully booked right now' }}
-    </p>
-  </section>
-  } @else {
-  <section class="hero">
-    <p class="bio">Loading profile… Is the mock API running on port 3000?</p>
-  </section>
-  }
-
-  <section id="work" aria-labelledby="work-h">
-    <h2 id="work-h">Selected work</h2>
-    <div class="filters" role="group" aria-label="Filter projects by technology">
-      @for (t of tags(); track t) {
-      <button type="button" class="chip" [class.active]="activeTag() === t" [attr.aria-pressed]="activeTag() === t"
-        (click)="toggleTag(t)">{{ t }}</button>
-      }
+<nz-layout class="layout">
+  <nz-header class="app-header">
+    <div class="header-container">
+      <a class="logo" routerLink="/">Raka Riandanny</a>
+      <ul nz-menu nzTheme="light" nzMode="horizontal" class="header-menu">
+        <li nz-menu-item><a routerLink="/" fragment="projects">Projects</a></li>
+        <li nz-menu-item><a routerLink="/" fragment="architecture">Architecture</a></li>
+        <li nz-menu-item><a routerLink="/" fragment="stack">Stack</a></li>
+        <li nz-menu-item><a routerLink="/" fragment="about">About</a></li>
+        <li nz-menu-item><a routerLink="/" fragment="contact">Contact</a></li>
+      </ul>
     </div>
-    <ul class="projects">
-      @for (pr of visibleProjects(); track pr.id) {
-      <li>
-        <a [href]="pr.url">
-          <span class="year">{{ pr.year }}</span>
-          <span class="body">
-            <strong>{{ pr.title }}</strong>
-            <span>{{ pr.summary }}</span>
-            <small>{{ pr.tags.join(', ') }}</small>
-          </span>
-        </a>
-      </li>
-      } @empty {
-      <li class="empty">No projects match this filter. Clear it to see everything.</li>
-      }
-    </ul>
-  </section>
-
-  <section id="experience" aria-labelledby="exp-h">
-    <h2 id="exp-h">Experience</h2>
-    <ol class="timeline">
-      @for (e of experience(); track e.id) {
-      <li>
-        <span class="when">{{ e.from }} – {{ e.to }}</span>
-        <div>
-          <h3>{{ e.role }}, {{ e.company }}</h3>
-          <ul>
-            @for (pt of e.points; track pt) { <li>{{ pt }}</li> }
-          </ul>
-        </div>
-      </li>
-      }
-    </ol>
-  </section>
-
-  <section id="skills" aria-labelledby="skills-h">
-    <h2 id="skills-h">Skills</h2>
-    <dl class="skills">
-      @for (g of skills(); track g.id) {
-      <dt>{{ g.group }}</dt>
-      <dd>{{ g.items.join(', ') }}</dd>
-      }
-    </dl>
-  </section>
-
-</main>
-
-<footer>
-  @if (profile(); as p) {
-  <a [href]="'mailto:' + p.email">{{ p.email }}</a>
-  @for (l of p.links; track l.label) { <a [href]="l.url" rel="noopener">{{ l.label }}</a> }
-  }
-</footer>
+  </nz-header>
+  <nz-content class="app-content">
+    <div class="content-wrapper">
+      <router-outlet />
+    </div>
+  </nz-content>
+  <nz-footer class="app-footer">
+    © {{ year }} Raka Riandanny. Client work is shown without confidential details.
+  </nz-footer>
+</nz-layout>
