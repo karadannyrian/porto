@@ -1,8 +1,5 @@
 @if (profile(); as p) {
 <div class="ant-layout-content hero">
-  <div class="hero-avatar" style="margin-bottom: 20px;">
-    <nz-avatar [nzSize]="80" nzIcon="user" style="background-color: var(--blue, #1890ff);"></nz-avatar>
-  </div>
   <h1>{{ p.name }}</h1>
   <p class="headline">{{ p.headline }}</p>
   <p class="value">{{ p.valueProp }}</p>
@@ -13,9 +10,9 @@
   }
   <div class="cta">
     <a nz-button nzType="primary" nzSize="large" routerLink="/" fragment="projects">View projects</a>
-    <a nz-button nzSize="large" [href]="p.cvUrl" download>
+    <!-- <a nz-button nzSize="large" [href]="p.cvUrl" download>
       <span nz-icon nzType="download"></span> Download CV
-    </a>
+    </a> -->
     <a nz-button nzSize="large" routerLink="/" fragment="contact">Contact me</a>
   </div>
 </div>
@@ -136,14 +133,14 @@
     <dt>Languages</dt>
     <dd>{{ p.languages }}</dd>
   </dl>
-  <a nz-button [href]="p.cvUrl" download>
+  <!-- <a nz-button [href]="p.cvUrl" download>
     <span nz-icon nzType="download"></span> Download CV
-  </a>
+  </a> -->
 </div>
 
 <div id="contact" class="ant-layout-content section-block" aria-labelledby="contact-h">
   <h2 id="contact-h" nz-typography>Have a project? Let's talk.</h2>
-  <p class="lead">Email is the fastest way to reach me. I reply within two working days.</p>
+  <p class="lead">Email is the fastest way to reach me.</p>
   <p class="links">
     <a nz-button nzType="link" [href]="'mailto:' + p.email">
       <span nz-icon nzType="mail"></span> {{ p.email }}
