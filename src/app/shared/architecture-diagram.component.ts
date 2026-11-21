@@ -35,7 +35,6 @@ import { Component } from '@angular/core';
         <rect x="200" y="338" width="310" height="36" rx="6" class="box api" />
         <text x="355" y="361" text-anchor="middle" class="lbl api-t">REST API</text>
       </svg>
-      <figcaption>Diagram drawn for this portfolio. It shows the pattern, not any client's system.</figcaption>
     </figure>
   `,
   styles: [`
