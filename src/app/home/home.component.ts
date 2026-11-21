@@ -12,6 +12,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzDividerModule,
     NzLayoutModule,
     NzTypographyModule,
+    NzAvatarModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

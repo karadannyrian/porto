@@ -4,6 +4,22 @@
   --blue: #1890ff;
   --line: #c9ceda;
   --display: 'Arial', system-ui, sans-serif;
+  --header-offset: 100px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+}
+
+[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
+@media (max-width: 680px) {
+  :root {
+    --header-offset: 160px;
+  }
 }
 
 * {

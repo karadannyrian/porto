@@ -1,5 +1,8 @@
 @if (profile(); as p) {
 <div class="ant-layout-content hero">
+  <div class="hero-avatar" style="margin-bottom: 20px;">
+    <nz-avatar [nzSize]="80" nzIcon="user" style="background-color: var(--blue, #1890ff);"></nz-avatar>
+  </div>
   <h1>{{ p.name }}</h1>
   <p class="headline">{{ p.headline }}</p>
   <p class="value">{{ p.valueProp }}</p>
@@ -18,7 +21,8 @@
 </div>
 } @else {
 <div class="ant-layout-content hero">
-  <nz-alert nzType="info" nzMessage="Loading profile…" nzDescription="Is the mock API running on port 3000?" nzShowIcon></nz-alert>
+  <nz-alert nzType="info" nzMessage="Loading profile…" nzDescription="Is the mock API running on port 3000?"
+    nzShowIcon></nz-alert>
 </div>
 }
 

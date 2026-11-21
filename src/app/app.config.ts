@@ -15,6 +15,7 @@ import {
   SendOutline,
   CheckCircleOutline,
   CheckOutline,
+  UserOutline,
 } from '@ant-design/icons-angular/icons';
 
 registerLocaleData(en);
@@ -27,6 +28,7 @@ const icons = [
   SendOutline,
   CheckCircleOutline,
   CheckOutline,
+  UserOutline,
 ];
 
 export const appConfig: ApplicationConfig = {
