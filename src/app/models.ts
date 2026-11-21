@@ -36,4 +36,3 @@ export interface Project {
 
 export interface Pattern { title: string; text: string; }
 export interface StackColumn { id: number; title: string; items: string[]; }
-export interface ContactMessage { name: string; email: string; message: string; }

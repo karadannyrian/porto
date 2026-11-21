@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, shareReplay } from 'rxjs';
-import { ContactMessage, Pattern, Profile, Project, StackColumn } from './models';
+import { Pattern, Profile, Project, StackColumn } from './models';
 
 interface Db {
   profile: Profile;
@@ -10,15 +10,10 @@ interface Db {
   techStack: StackColumn[];
 }
 
-// Replace with your own form endpoint (see step 2)
-const FORM_URL = 'https://formspree.io/f/YOUR_FORM_ID';
-
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private http = inject(HttpClient);
 
-  // Relative URL, so it works under the /porto/ base path.
-  // Angular 17: use 'assets/db.json'. Angular 18+: use 'db.json'.
   private db$ = this.http.get<Db>('db.json').pipe(shareReplay(1));
 
   getProfile(): Observable<Profile> { return this.db$.pipe(map(d => d.profile)); }
