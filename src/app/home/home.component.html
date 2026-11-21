@@ -4,17 +4,22 @@
   <p class="headline">{{ p.headline }}</p>
   <p class="value">{{ p.valueProp }}</p>
   @if (p.available) {
-  <p class="badge"><span class="dot" aria-hidden="true"></span>{{ p.availability }}</p>
+  <div style="margin-bottom: 24px;">
+    <nz-badge nzStatus="success" [nzText]="p.availability"></nz-badge>
+  </div>
   }
   <div class="cta">
-    <a class="btn primary" routerLink="/" fragment="projects">View projects</a>
-    <a class="btn" [href]="p.cvUrl" download>Download CV</a>
-    <a class="btn" routerLink="/" fragment="contact">Contact me</a>
+    <a nz-button nzType="primary" nzSize="large" routerLink="/" fragment="projects">View projects</a>
+    <a nz-button nzSize="large" [href]="p.cvUrl" download>
+      <span nz-icon nzType="download"></span> Download CV
+    </a>
+    <a nz-button nzSize="large" routerLink="/" fragment="contact">Contact me</a>
   </div>
 </section>
 } @else {
 <section class="hero">
-  <p class="value">Loading… Is the mock API running on port 3000?</p>
+  <nz-alert nzType="info" nzMessage="Loading profile…" nzDescription="Is the mock API running on port 3000?"
+    nzShowIcon></nz-alert>
 </section>
 }
 
@@ -68,11 +73,19 @@
         </svg>
       </div>
       <div class="card-body">
-        <p class="nda">Under NDA</p>
+        <div>
+          <nz-tag nzColor="default">Under NDA</nz-tag>
+        </div>
         <h3>{{ pr.title }}</h3>
         <p>{{ pr.scope }}</p>
-        <p class="tags">{{ pr.tags.join(' · ') }}</p>
-        <a [routerLink]="['/projects', pr.slug]" class="more">Read case study →</a>
+        <div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0;">
+          @for (tag of pr.tags; track tag) {
+          <nz-tag nzColor="blue">{{ tag }}</nz-tag>
+          }
+        </div>
+        <a nz-button nzType="link" [routerLink]="['/projects', pr.slug]" style="padding: 0; margin-top: 6px;">
+          Read case study <span nz-icon nzType="arrow-right"></span>
+        </a>
       </div>
     </li>
     }
@@ -97,12 +110,13 @@
   <h2 id="stack-h">Tech stack</h2>
   <div class="stack">
     @for (col of stack(); track col.id) {
-    <div>
-      <h3>{{ col.title }}</h3>
-      <ul>
-        @for (i of col.items; track i) { <li>{{ i }}</li> }
+    <nz-card [nzTitle]="col.title" [nzBordered]="true">
+      <ul style="list-style: none; margin: 0; padding: 0;">
+        @for (i of col.items; track i) {
+        <li style="padding: 6px 0; border-bottom: 1px solid var(--line, #eee);">{{ i }}</li>
+        }
       </ul>
-    </div>
+    </nz-card>
     }
   </div>
 </section>
@@ -119,15 +133,21 @@
     <dt>Languages</dt>
     <dd>{{ p.languages }}</dd>
   </dl>
-  <a class="btn" [href]="p.cvUrl" download>Download CV</a>
+  <a nz-button [href]="p.cvUrl" download>
+    <span nz-icon nzType="download"></span> Download CV
+  </a>
 </section>
 
 <section id="contact" aria-labelledby="contact-h">
   <h2 id="contact-h">Have a project? Let's talk.</h2>
   <p class="lead">Email is the fastest way to reach me. I reply within two working days.</p>
   <p class="links">
-    <a [href]="'mailto:' + p.email">{{ p.email }}</a>
-    @for (l of p.links; track l.label) { <a [href]="l.url" rel="noopener">{{ l.label }}</a> }
+    <a nz-button nzType="link" [href]="'mailto:' + p.email">
+      <span nz-icon nzType="mail"></span> {{ p.email }}
+    </a>
+    @for (l of p.links; track l.label) {
+    <a nz-button nzType="link" [href]="l.url" rel="noopener" target="_blank">{{ l.label }}</a>
+    }
   </p>
 </section>
 }

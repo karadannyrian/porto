@@ -1,16 +1,35 @@
-<a class="back" routerLink="/" fragment="projects">← All projects</a>
+<div style="margin-bottom: 24px;">
+  <a nz-button nzType="link" routerLink="/" fragment="projects">
+    <span nz-icon nzType="arrow-left"></span> All projects
+  </a>
+</div>
 
 @if (project(); as p) {
   <article>
-    <header>
-      <p class="nda">Under NDA</p>
-      <h1>{{ p.title }}</h1>
-      <p class="scope">{{ p.scope }}</p>
-      <p class="tags">{{ p.tags.join(' · ') }}</p>
+    <header style="margin-bottom: 32px;">
+      <div style="margin-bottom: 8px;">
+        <nz-tag nzColor="default">Under NDA</nz-tag>
+      </div>
+      <h1 style="font-size: 2.2rem; margin: 0 0 8px;">{{ p.title }}</h1>
+      <p class="scope" style="font-size: 1.15rem; color: #5b6172; margin: 8px 0 16px;">{{ p.scope }}</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        @for (tag of p.tags; track tag) {
+          <nz-tag nzColor="blue">{{ tag }}</nz-tag>
+        }
+      </div>
     </header>
 
-    <section><h2>Context</h2><p>{{ p.context }}</p></section>
-    <section><h2>The challenge</h2><p>{{ p.challenge }}</p></section>
+    <nz-divider></nz-divider>
+
+    <section>
+      <h2>Context</h2>
+      <p>{{ p.context }}</p>
+    </section>
+
+    <section>
+      <h2>The challenge</h2>
+      <p>{{ p.challenge }}</p>
+    </section>
 
     <section>
       <h2>The solution</h2>
@@ -33,10 +52,22 @@
       <ul>@for (l of p.lessons; track l) { <li>{{ l }}</li> }</ul>
     </section>
 
-    <a class="back" routerLink="/" fragment="contact">Have a similar project? Let's talk.</a>
+    <div style="margin-top: 40px;">
+      <a nz-button nzType="primary" routerLink="/" fragment="contact">
+        Have a similar project? Let's talk
+      </a>
+    </div>
   </article>
 } @else if (project() === null) {
-  <p class="state">This case study doesn't exist. <a routerLink="/" fragment="projects">Go back to the projects.</a></p>
+  <nz-alert
+    nzType="warning"
+    nzMessage="Case Study Not Found"
+    nzDescription="This case study doesn't exist."
+    nzShowIcon
+  ></nz-alert>
+  <div style="margin-top: 16px;">
+    <a nz-button routerLink="/" fragment="projects">Go back to projects</a>
+  </div>
 } @else {
-  <p class="state">Loading case study…</p>
+  <nz-alert nzType="info" nzMessage="Loading case study…" nzShowIcon></nz-alert>
 }

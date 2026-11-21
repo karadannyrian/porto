@@ -1,22 +1,41 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ArchitectureDiagramComponent } from '../shared/architecture-diagram.component';
 import { ApiService } from '../api.service';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 type SendState = 'idle' | 'sending' | 'sent' | 'error';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, ArchitectureDiagramComponent],
+  imports: [
+    RouterLink,
+    ArchitectureDiagramComponent,
+    NzButtonModule,
+    NzCardModule,
+    NzTagModule,
+    NzBadgeModule,
+    NzIconModule,
+    NzFormModule,
+    NzInputModule,
+    NzAlertModule,
+    NzDividerModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  private api = inject(ApiService);
-  private fb = inject(FormBuilder);
+  private api: ApiService = inject(ApiService);
 
   profile = toSignal(this.api.getProfile());
   projects = toSignal(this.api.getProjects(), { initialValue: [] });
