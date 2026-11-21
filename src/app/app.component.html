@@ -1,0 +1,122 @@
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <span class="mark">{{ profile()?.name ?? 'Portfolio' }}</span>
+  <nav aria-label="Primary">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+  @if (profile(); as p) {
+  <section class="hero">
+    <h1>{{ p.name }}</h1>
+    <p class="role">{{ p.role }}, {{ p.location }}</p>
+    <p class="bio">{{ p.bio }}</p>
+    <p class="status" [class.on]="p.available">
+      <span class="dot" aria-hidden="true"></span>
+      {{ p.available ? 'Open to new projects' : 'Fully booked right now' }}
+    </p>
+  </section>
+  } @else {
+  <section class="hero">
+    <p class="bio">Loading profile… Is the mock API running on port 3000?</p>
+  </section>
+  }
+
+  <section id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <div class="filters" role="group" aria-label="Filter projects by technology">
+      @for (t of tags(); track t) {
+      <button type="button" class="chip" [class.active]="activeTag() === t" [attr.aria-pressed]="activeTag() === t"
+        (click)="toggleTag(t)">{{ t }}</button>
+      }
+    </div>
+    <ul class="projects">
+      @for (pr of visibleProjects(); track pr.id) {
+      <li>
+        <a [href]="pr.url">
+          <span class="year">{{ pr.year }}</span>
+          <span class="body">
+            <strong>{{ pr.title }}</strong>
+            <span>{{ pr.summary }}</span>
+            <small>{{ pr.tags.join(', ') }}</small>
+          </span>
+        </a>
+      </li>
+      } @empty {
+      <li class="empty">No projects match this filter. Clear it to see everything.</li>
+      }
+    </ul>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <ol class="timeline">
+      @for (e of experience(); track e.id) {
+      <li>
+        <span class="when">{{ e.from }} – {{ e.to }}</span>
+        <div>
+          <h3>{{ e.role }}, {{ e.company }}</h3>
+          <ul>
+            @for (pt of e.points; track pt) { <li>{{ pt }}</li> }
+          </ul>
+        </div>
+      </li>
+      }
+    </ol>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <dl class="skills">
+      @for (g of skills(); track g.id) {
+      <dt>{{ g.group }}</dt>
+      <dd>{{ g.items.join(', ') }}</dd>
+      }
+    </dl>
+  </section>
+
+  <!-- <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Start a conversation</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label>Your name
+        <input formControlName="name" autocomplete="name" />
+        @if (form.controls.name.touched && form.controls.name.invalid) {
+        <span class="err">Enter your name.</span>
+        }
+      </label>
+      <label>Email
+        <input type="email" formControlName="email" autocomplete="email" />
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+        <span class="err">Enter a valid email address.</span>
+        }
+      </label>
+      <label>Message
+        <textarea rows="5" formControlName="message"></textarea>
+        @if (form.controls.message.touched && form.controls.message.invalid) {
+        <span class="err">Write at least 10 characters.</span>
+        }
+      </label>
+      <button type="submit" [disabled]="sendState() === 'sending'">
+        {{ sendState() === 'sending' ? 'Sending…' : 'Send message' }}
+      </button>
+      <p class="feedback" role="status" aria-live="polite">
+        @switch (sendState()) {
+        @case ('sent') { Message sent. I'll reply within two working days. }
+        @case ('error') { Couldn't send. Check that the API is running, then try again. }
+        }
+      </p>
+    </form>
+  </section> -->
+</main>
+
+<footer>
+  @if (profile(); as p) {
+  <a [href]="'mailto:' + p.email">{{ p.email }}</a>
+  @for (l of p.links; track l.label) { <a [href]="l.url" rel="noopener">{{ l.label }}</a> }
+  }
+</footer>

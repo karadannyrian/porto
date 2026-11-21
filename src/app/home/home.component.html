@@ -1,0 +1,138 @@
+@if (profile(); as p) {
+  <section class="hero">
+    <h1>{{ p.name }}</h1>
+    <p class="headline">{{ p.headline }}</p>
+    <p class="value">{{ p.valueProp }}</p>
+    @if (p.available) {
+      <p class="badge"><span class="dot" aria-hidden="true"></span>{{ p.availability }}</p>
+    }
+    <div class="cta">
+      <a class="btn primary" routerLink="/" fragment="projects">View projects</a>
+      <a class="btn" [href]="p.cvUrl" download>Download CV</a>
+      <a class="btn" routerLink="/" fragment="contact">Contact me</a>
+    </div>
+  </section>
+} @else {
+  <section class="hero"><p class="value">Loading… Is the mock API running on port 3000?</p></section>
+}
+
+<section id="projects" aria-labelledby="projects-h">
+  <h2 id="projects-h">Projects</h2>
+  <p class="lead">Four applications from one enterprise HR platform. Each one is under NDA, so the visuals are my own recreated illustrations and the case studies leave out client details.</p>
+  <ul class="grid">
+    @for (pr of projects(); track pr.id) {
+      <li class="card">
+        <div class="thumb" aria-hidden="true">
+          <svg viewBox="0 0 240 130">
+            @switch (pr.thumb) {
+              @case ('tree') {
+                <rect x="95" y="12" width="50" height="22" rx="4" />
+                <path d="M120 34v14M50 48h140M50 48v14M120 48v14M190 48v14" />
+                <rect x="25" y="62" width="50" height="22" rx="4" /><rect x="95" y="62" width="50" height="22" rx="4" /><rect x="165" y="62" width="50" height="22" rx="4" />
+                <path d="M50 84v12M50 96h-20M50 96h20" /><rect x="10" y="100" width="40" height="18" rx="4" class="f" /><rect x="55" y="100" width="40" height="18" rx="4" class="f" />
+              }
+              @case ('bars') {
+                <path d="M20 112h200" />
+                <rect x="30" y="70" width="26" height="42" class="f" /><rect x="68" y="48" width="26" height="64" class="f" />
+                <rect x="106" y="32" width="26" height="80" /><rect x="144" y="58" width="26" height="54" class="f" /><rect x="182" y="40" width="26" height="72" class="f" />
+                <path d="M30 28l40-8 40 10 40-12 50 6" class="ln" />
+              }
+              @case ('steps') {
+                <circle cx="40" cy="65" r="14" class="f" /><circle cx="120" cy="65" r="14" /><circle cx="200" cy="65" r="14" />
+                <path d="M54 65h52M134 65h52" /><path d="M33 65l5 5 9-10" class="ln" />
+                <rect x="60" y="100" width="120" height="10" rx="5" /><rect x="60" y="100" width="64" height="10" rx="5" class="f" />
+              }
+              @case ('grid') {
+                @for (r of [0,1,2,3]; track r) {
+                  @for (c of [0,1,2,3,4,5]; track c) {
+                    <rect [attr.x]="22 + c * 34" [attr.y]="14 + r * 28" width="28" height="22" rx="3"
+                          [class.f]="(r * 6 + c) % 3 === 0" [class.hi]="(r * 6 + c) % 7 === 2" />
+                  }
+                }
+              }
+            }
+          </svg>
+        </div>
+        <div class="card-body">
+          <p class="nda">Under NDA</p>
+          <h3>{{ pr.title }}</h3>
+          <p>{{ pr.scope }}</p>
+          <p class="tags">{{ pr.tags.join(' · ') }}</p>
+          <a [routerLink]="['/projects', pr.slug]" class="more">Read case study →</a>
+        </div>
+      </li>
+    }
+  </ul>
+</section>
+
+<section id="architecture" aria-labelledby="arch-h">
+  <h2 id="arch-h">How I build</h2>
+  <p class="lead">All four apps share one architecture. This is the pattern, drawn and written for this portfolio.</p>
+  <app-architecture-diagram />
+  <dl class="patterns">
+    @for (pt of patterns(); track pt.title) {
+      <dt>{{ pt.title }}</dt>
+      <dd>{{ pt.text }}</dd>
+    }
+  </dl>
+  <p class="label">Illustrative pattern — not production client code.</p>
+  <pre tabindex="0"><code>{{ snippet }}</code></pre>
+</section>
+
+<section id="stack" aria-labelledby="stack-h">
+  <h2 id="stack-h">Tech stack</h2>
+  <div class="stack">
+    @for (col of stack(); track col.id) {
+      <div>
+        <h3>{{ col.title }}</h3>
+        <ul>
+          @for (i of col.items; track i) { <li>{{ i }}</li> }
+        </ul>
+      </div>
+    }
+  </div>
+</section>
+
+@if (profile(); as p) {
+  <section id="about" aria-labelledby="about-h">
+    <h2 id="about-h">About and availability</h2>
+    <p class="bio">{{ p.bio }}</p>
+    <dl class="facts">
+      <dt>Availability</dt><dd>{{ p.workMode }}</dd>
+      <dt>Time zone</dt><dd>{{ p.timezone }}</dd>
+      <dt>Languages</dt><dd>{{ p.languages }}</dd>
+    </dl>
+    <a class="btn" [href]="p.cvUrl" download>Download CV</a>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Have a project? Let's talk.</h2>
+    <p class="links">
+      <a [href]="'mailto:' + p.email">{{ p.email }}</a>
+      @for (l of p.links; track l.label) { <a [href]="l.url" rel="noopener">{{ l.label }}</a> }
+    </p>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label>Your name
+        <input formControlName="name" autocomplete="name" />
+        @if (form.controls.name.touched && form.controls.name.invalid) { <span class="err">Enter your name.</span> }
+      </label>
+      <label>Email
+        <input type="email" formControlName="email" autocomplete="email" />
+        @if (form.controls.email.touched && form.controls.email.invalid) { <span class="err">Enter a valid email address.</span> }
+      </label>
+      <label>Message
+        <textarea rows="5" formControlName="message"></textarea>
+        @if (form.controls.message.touched && form.controls.message.invalid) { <span class="err">Write at least 10 characters.</span> }
+      </label>
+      <button type="submit" class="btn primary" [disabled]="sendState() === 'sending'">
+        {{ sendState() === 'sending' ? 'Sending…' : 'Send message' }}
+      </button>
+      <p class="feedback" role="status" aria-live="polite">
+        @switch (sendState()) {
+          @case ('sent') { Message sent. I'll reply within two working days. }
+          @case ('error') { Couldn't send. Check that the API is running, then try again. }
+        }
+      </p>
+    </form>
+  </section>
+}

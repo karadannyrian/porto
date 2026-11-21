@@ -1,0 +1,42 @@
+<a class="back" routerLink="/" fragment="projects">← All projects</a>
+
+@if (project(); as p) {
+  <article>
+    <header>
+      <p class="nda">Under NDA</p>
+      <h1>{{ p.title }}</h1>
+      <p class="scope">{{ p.scope }}</p>
+      <p class="tags">{{ p.tags.join(' · ') }}</p>
+    </header>
+
+    <section><h2>Context</h2><p>{{ p.context }}</p></section>
+    <section><h2>The challenge</h2><p>{{ p.challenge }}</p></section>
+
+    <section>
+      <h2>The solution</h2>
+      <ul>@for (s of p.solution; track s) { <li>{{ s }}</li> }</ul>
+      <app-architecture-diagram />
+    </section>
+
+    <section>
+      <h2>My role and contributions</h2>
+      <ul>@for (r of p.role; track r) { <li>{{ r }}</li> }</ul>
+    </section>
+
+    <section>
+      <h2>Outcome</h2>
+      <ul>@for (o of p.outcome; track o) { <li>{{ o }}</li> }</ul>
+    </section>
+
+    <section>
+      <h2>What I'd do differently</h2>
+      <ul>@for (l of p.lessons; track l) { <li>{{ l }}</li> }</ul>
+    </section>
+
+    <a class="back" routerLink="/" fragment="contact">Have a similar project? Let's talk.</a>
+  </article>
+} @else if (project() === null) {
+  <p class="state">This case study doesn't exist. <a routerLink="/" fragment="projects">Go back to the projects.</a></p>
+} @else {
+  <p class="state">Loading case study…</p>
+}
