@@ -1,12 +1,12 @@
 {
   "profile": {
     "name": "Raka Riandanny",
-    "headline": "Front-End Developer — Angular & TypeScript",
-    "valueProp": "I build reusable, scalable Angular modules for enterprise web applications.",
-    "availability": "Available for remote part-time freelance (15–25 hrs/week)",
+    "headline": "Front-End Developer | Angular & TypeScript",
+    "valueProp": "I build reusable Angular modules and shared components for large-scale enterprise applications.",
+    "availability": "Available for remote part-time freelance work (15–25 hrs/week)",
     "available": true,
-    "bio": "I'm a front-end developer who specializes in Angular and TypeScript for enterprise web applications. I work inside shared component libraries and service layers, building reusable modules that keep large, multi-app codebases consistent. I work remotely and communicate in clear, written updates.",
-    "timezone": "WIB (UTC+7), open to overlap with US/EU hours",
+    "bio": "I'm a front-end developer specializing in Angular and TypeScript. Most of my work involves building features for enterprise applications, where multiple teams and applications rely on the same components, services, and data structures. I've worked on shared component libraries, API service layers, role-based access control, and reusable modules across a multi-app HR platform. I enjoy working on the parts of an application that other developers can build on, and I keep communication clear through regular written updates.",
+    "timezone": "WIB (UTC+7), open to overlap with US/EU working hours",
     "workMode": "Remote · Part-time freelance · 15–25 hrs/week",
     "languages": "Indonesian (native), English (professional)",
     "cvUrl": "assets/Raka-Riandanny-CV.pdf",
@@ -26,10 +26,10 @@
     {
       "id": 1,
       "slug": "employee-management",
-      "title": "Enterprise HR Platform — Employee Management Module",
+      "title": "Enterprise HR Platform — Employee Management",
       "nda": true,
-      "scope": "Core employee records, org hierarchy, and role-based access.",
-      "focus": "Data modeling, RBAC, org hierarchy",
+      "scope": "Employee records, organizational hierarchy, and role-based access control.",
+      "focus": "Data modeling, RBAC, organizational hierarchy",
       "tags": [
         "Angular",
         "TypeScript",
@@ -37,39 +37,40 @@
         "SCSS"
       ],
       "thumb": "tree",
-      "context": "A mid-sized enterprise needed to digitize its HR operations across four interconnected Angular applications. On the Employee Management module, I was the sole front-end developer, owning the implementation while coordinating with backend developers, designers, and QA. This module holds the employee records and organizational structure the other HR modules read from.",
-      "challenge": "I carried the module's front-end implementation alone, so design and data-model questions came to me first. Employee data feeds every other HR app, so the data model, shared UI patterns, and permission rules had to be right at the start. Four apps with different business scopes had to share one set of forms, tables, and access rules.",
+      "context": "The project involved building an HR platform made up of four interconnected Angular applications. The Employee Management module handled employee records and organizational structures used by the other modules. I was the sole front-end developer responsible for this module, working directly with backend developers, designers, and QA to deliver the implementation.",
+      "challenge": "Employee data was shared across all four applications, so changes to its structure could affect several parts of the platform. I had to establish consistent data models, reusable UI components, and permission rules while handling the module's front-end development independently.",
       "solution": [
-        "Implemented the module's employee and org-unit TypeScript interfaces against the platform's shared data model, so the contract stayed aligned across the four apps.",
-        "Built a recursive tree component for the organizational hierarchy on the shared UI library, with an API other feature modules could compose.",
-        "Implemented route guards and a structural directive that show or hide UI by role and permission, so access rules live in one place.",
-        "Built reusable form and table components for employee records and documented their conventions, so later contributors could extend the module.",
-        "Built a typed API service layer for employee endpoints, so components read data through one boundary and error handling stayed consistent."
+        "Defined TypeScript interfaces for employee records and organizational units based on the platform's shared data model, keeping the frontend contracts consistent across all four applications.",
+        "Built a recursive organizational tree component for the shared UI library, allowing other feature modules to display and work with hierarchical data through the same component API.",
+        "Implemented route guards and a permission-based structural directive to control access to routes and UI elements based on user roles and permissions.",
+        "Created reusable forms and tables for employee records, then documented their usage and conventions so other developers could extend them consistently.",
+        "Built a typed API service layer for employee endpoints, giving components a consistent way to retrieve data and handle API errors."
       ],
       "role": [
-        "Front-end owner for the Employee Management module: made implementation decisions and settled component and API contracts with backend and design.",
-        "Built the reusable form, table, and org-tree components used throughout the module.",
-        "Implemented the role-based access layer: route guards and the permission-based structural directive.",
-        "Wrote and maintained the API service layer for employee endpoints.",
-        "Reviewed module pull requests and kept structure and conventions consistent for other contributors."
+        "Owned the front-end implementation of the Employee Management module and made decisions about its component structure and implementation.",
+        "Worked with backend developers and designers to agree on API contracts, data structures, and UI behavior.",
+        "Built reusable form, table, and organizational tree components.",
+        "Implemented route guards and permission-based UI access.",
+        "Developed and maintained the API service layer for employee endpoints.",
+        "Reviewed pull requests and helped maintain consistent code structure and conventions across the module."
       ],
       "outcome": [
-        "Shipped the Employee Management module to production as part of a four-app enterprise HR platform.",
-        "Was the sole front-end developer on the module, owning its implementation inside the platform's established Angular architecture and shared component library.",
-        "Delivered the employee and org-unit data foundation the other three HR modules depend on."
+        "Delivered the Employee Management module to production as part of a four-application enterprise HR platform.",
+        "Handled the module's front-end development independently within the platform's existing Angular architecture and shared component library.",
+        "Delivered the employee and organizational unit data foundation used by the platform's other three HR modules."
       ],
       "lessons": [
-        "I would define the permission model as a shared contract earlier, before building screens.",
-        "I would add visual regression tests for the shared components from the first sprint."
+        "I would define the permission model as a shared contract with the backend team before starting the UI implementation.",
+        "I would introduce visual regression testing for shared components earlier, especially because changes could affect multiple applications."
       ]
     },
     {
       "id": 2,
       "slug": "attendance-management",
-      "title": "Enterprise HR Platform — Attendance Management Module",
+      "title": "Enterprise HR Platform — Attendance Management",
       "nda": true,
-      "scope": "Real-time attendance tracking and reporting dashboards.",
-      "focus": "Real-time tracking, reporting dashboards",
+      "scope": "Attendance tracking, data updates, and reporting dashboards.",
+      "focus": "Real-time data, reporting dashboards, rendering performance",
       "tags": [
         "Angular",
         "TypeScript",
@@ -77,36 +78,36 @@
         "Charts"
       ],
       "thumb": "bars",
-      "context": "The same HR platform needed a way to track attendance across the organization and report on it. I was one of the front-end developers on this module, working alongside the other three apps on shared components and conventions.",
-      "challenge": "Attendance data changes constantly, and managers need fast, readable summaries. Large lists and frequent updates had to stay responsive.",
+      "context": "The HR platform also needed an attendance module where managers could monitor employee attendance and review reports. I worked as one of the front-end developers on this module, following the platform's shared component library and established development conventions.",
+      "challenge": "Attendance records change frequently, and the module had to display those updates without making large employee lists difficult to use. The reporting dashboards also needed to present the data in a way that managers could understand quickly.",
       "solution": [
-        "Attendance events flow through RxJS streams into a service-level store; views subscribe with the async pipe.",
-        "Used the platform's shared filter and date-range components across the module.",
-        "Dashboard widgets are small presentational components fed by one data stream."
+        "Used RxJS streams and a service-level store to manage attendance data, with components subscribing through Angular's async pipe.",
+        "Integrated the platform's shared filtering and date-range components across attendance views.",
+        "Built dashboard widgets as small presentational components that consume data from a shared stream, keeping data handling separate from the UI."
       ],
       "role": [
-        "Built the reporting dashboard components.",
-        "Implemented the stream-based data layer for attendance records.",
-        "Optimized list rendering with OnPush change detection and trackBy.",
-        "Contributed shared filter components to the common library."
+        "Developed the reporting dashboard components.",
+        "Implemented the RxJS-based data layer for attendance records.",
+        "Optimized large list rendering using OnPush change detection and trackBy.",
+        "Contributed reusable filter components to the shared UI library."
       ],
       "outcome": [
-        "Shipped the Attendance Management module to production as part of the four-app HR platform.",
-        "Built the stream-based data layer and OnPush/trackBy rendering that kept large, frequently updating attendance lists responsive.",
-        "Reporting dashboards composed the platform's shared filter and date-range components."
+        "Delivered the Attendance Management module to production as part of the four-application HR platform.",
+        "Implemented the stream-based data layer and optimized list rendering with OnPush and trackBy to keep frequently updated attendance records responsive.",
+        "Built reporting dashboards using the platform's shared filtering and date-range components."
       ],
       "lessons": [
-        "I would agree on update frequency and data shape with the back end before building the stream layer.",
-        "I would add a shared loading and empty-state pattern sooner."
+        "I would agree on the expected update frequency and data structure with the backend team before designing the RxJS data layer.",
+        "I would establish shared loading and empty-state components earlier to keep the experience consistent across attendance views."
       ]
     },
     {
       "id": 3,
       "slug": "training-management",
-      "title": "Enterprise HR Platform — Training Management Module",
+      "title": "Enterprise HR Platform — Training Management",
       "nda": true,
-      "scope": "Multi-step training workflows with clear progress states.",
-      "focus": "Multi-step workflows, progress states",
+      "scope": "Multi-step training workflows and progress tracking.",
+      "focus": "Multi-step forms, workflow states, progress indicators",
       "tags": [
         "Angular",
         "TypeScript",
@@ -114,35 +115,35 @@
         "Angular Material"
       ],
       "thumb": "steps",
-      "context": "HR teams needed to plan, assign and follow up on employee training. I was one of the front-end developers on this module, aligning with the platform on shared UI patterns and workflow conventions.",
-      "challenge": "Training requests move through several steps and states. Users need to know where an item stands and what to do next, so the state model and progress indicators have to be explicit.",
+      "context": "HR teams needed a module to manage employee training, from planning and assigning sessions to tracking their progress. I worked on the front-end implementation alongside other developers, following the platform's shared UI components and workflow conventions.",
+      "challenge": "Training requests pass through several stages, and users need to understand the current status of each request and what action comes next. The frontend needed a clear workflow model that could handle validation and status changes consistently.",
       "solution": [
-        "A reusable stepper workflow built on Angular Material, with per-step validation.",
-        "Workflow states modeled as TypeScript union types, so invalid states fail at compile time.",
-        "Used the platform's shared status badge and timeline components."
+        "Built a reusable multi-step workflow using Angular Material's stepper component, including validation for individual steps.",
+        "Modeled workflow states with TypeScript union types to restrict the application to explicitly defined states at compile time.",
+        "Integrated the platform's shared status badge and timeline components to display workflow progress consistently."
       ],
       "role": [
-        "Built the multi-step forms and workflow screens.",
-        "Modeled workflow states and transitions in TypeScript.",
-        "Built status and progress components on top of the shared library."
+        "Developed the multi-step forms and training workflow screens.",
+        "Defined workflow states and transitions using TypeScript.",
+        "Built status and progress components using the shared UI library."
       ],
       "outcome": [
-        "Shipped the Training Management module to production as part of the four-app HR platform.",
-        "Modeled workflow states as TypeScript union types, so invalid transitions fail at compile time.",
-        "Kept the stepper and status components consistent with the shared library's API."
+        "Delivered the Training Management module to production as part of the four-application HR platform.",
+        "Implemented a typed workflow model using TypeScript union types to catch invalid state assignments at compile time.",
+        "Used the shared library's component APIs for stepper-related status and progress displays."
       ],
       "lessons": [
-        "I would document the workflow state model in the repo for the next developer.",
-        "I would test each transition with unit tests earlier."
+        "I would document the workflow states and allowed transitions directly in the repository so future developers can understand the implementation more easily.",
+        "I would add unit tests for individual state transitions earlier in development."
       ]
     },
     {
       "id": 4,
       "slug": "workload-management",
-      "title": "Enterprise HR Platform — Workload Management Module",
+      "title": "Enterprise HR Platform — Workload Management",
       "nda": true,
-      "scope": "Workload visualization and capacity planning.",
-      "focus": "Data visualization, capacity planning",
+      "scope": "Team workload visualization and capacity planning.",
+      "focus": "Data visualization, capacity calculations, performance",
       "tags": [
         "Angular",
         "TypeScript",
@@ -150,45 +151,45 @@
         "Charts"
       ],
       "thumb": "grid",
-      "context": "Managers needed a clear view of team workload and available capacity. I was one of the front-end developers on this module, working within the platform's shared visualization and service patterns.",
-      "challenge": "Capacity data is dense, and managers need over- and under-allocation visible at a glance. Charts and derived metrics needed consistent APIs and rendering that stays fast on large datasets.",
+      "context": "Managers needed a way to review team workloads and understand how available capacity was being used. I worked on the front-end development of this module, using the platform's shared visualization components and service patterns.",
+      "challenge": "Workload data can become difficult to interpret when multiple employees, assignments, and capacity values appear together. The charts and calculated metrics needed to remain consistent across the module, while large datasets required careful handling to avoid unnecessary rendering work.",
       "solution": [
-        "Implemented chart and heat-map views through the platform's shared UI components, with one API across the module.",
-        "Computed derived values (utilization, remaining capacity) in services, so templates stayed thin.",
-        "Lazy-loaded the visualization code so it downloads when the module opens."
+        "Built chart and heat-map views using the platform's shared visualization components, keeping their APIs consistent across the module.",
+        "Moved calculations for utilization and remaining capacity into services, keeping presentation components focused on displaying data.",
+        "Lazy-loaded the visualization code so users only downloaded those resources when opening the workload module."
       ],
       "role": [
-        "Built the visualization components.",
-        "Implemented the services that calculate capacity and utilization.",
-        "Handled lazy loading and bundle-size checks for the module."
+        "Developed the workload visualization components.",
+        "Implemented services for calculating capacity and utilization values.",
+        "Handled lazy loading and checked the module's bundle size."
       ],
       "outcome": [
-        "Shipped the Workload Management module to production as part of the four-app HR platform.",
-        "Implemented chart and heat-map views through the platform's shared UI components, keeping visualization consistent across modules.",
-        "Moved capacity calculations into services and lazy-loaded visualization code, keeping the module's initial bundle small."
+        "Delivered the Workload Management module to production as part of the four-application HR platform.",
+        "Built chart and heat-map views using shared visualization components, keeping chart implementations consistent across the module.",
+        "Moved capacity calculations into services and lazy-loaded visualization code to reduce the module's initial download requirements."
       ],
       "lessons": [
-        "I would set accessibility rules for charts (text alternatives, color contrast) at the start.",
-        "I would profile large datasets earlier to choose between SVG and canvas."
+        "I would establish chart accessibility requirements early, including color contrast and text alternatives for visual data.",
+        "I would profile large datasets earlier to determine whether SVG or canvas rendering would be more suitable."
       ]
     }
   ],
   "architecture": [
     {
-      "title": "Shared component library",
-      "text": "Tables, forms, dialogs, status badges and charts lived in one shared module with a stable API. Feature modules composed them instead of rebuilding them."
+      "title": "Shared Component Library",
+      "text": "The platform used a shared library for tables, forms, dialogs, status badges, and charts. Feature modules reused these components through consistent APIs, which reduced duplicated UI code and made shared changes easier to maintain."
     },
     {
-      "title": "Service layer and API abstraction",
-      "text": "Components reached the API through a typed ApiService rather than HttpClient directly. Feature services built on top of it."
+      "title": "Service Layer and API Abstraction",
+      "text": "Components accessed backend endpoints through a typed ApiService instead of calling HttpClient directly. Feature-specific services built on top of this layer, keeping API communication and data handling out of presentation components."
     },
     {
-      "title": "RxJS state management",
-      "text": "Services exposed observables. Components subscribed with the async pipe, so subscriptions cleaned themselves up and state flowed one way."
+      "title": "RxJS State Management",
+      "text": "Services exposed application data through RxJS observables. Components consumed these streams with the async pipe, reducing manual subscription management and keeping data flow consistent."
     },
     {
-      "title": "Lazy loading and module structure",
-      "text": "Code was split into core, shared and feature areas. Each feature was lazy-loaded by route, so users downloaded only what they opened."
+      "title": "Lazy Loading and Module Structure",
+      "text": "The codebase was organized into core, shared, and feature areas. Feature modules were lazy-loaded through routing, so users downloaded feature code when they accessed the corresponding module."
     }
   ],
   "techStack": [
@@ -209,7 +210,7 @@
       "items": [
         "RxJS",
         "Services / Observables",
-        "REST API integration",
+        "REST API Integration",
         "NgRx"
       ]
     },
