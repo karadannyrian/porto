@@ -28,7 +28,4 @@ export class ApiService {
   }
   getArchitecture(): Observable<Pattern[]> { return this.db$.pipe(map(d => d.architecture)); }
   getTechStack(): Observable<StackColumn[]> { return this.db$.pipe(map(d => d.techStack)); }
-  sendMessage(body: ContactMessage): Observable<unknown> {
-    return this.http.post(FORM_URL, body);
-  }
 }

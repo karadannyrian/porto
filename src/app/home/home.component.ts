@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ApiService } from '../api.service';
 import { ArchitectureDiagramComponent } from '../shared/architecture-diagram.component';
+import { ApiService } from '../api.service';
 
 type SendState = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -39,19 +39,4 @@ export class ApiService {
   }
 }`;
 
-  form = this.fb.nonNullable.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    message: ['', [Validators.required, Validators.minLength(10)]],
-  });
-  sendState = signal<SendState>('idle');
-
-  submit() {
-    if (this.form.invalid) { this.form.markAllAsTouched(); return; }
-    this.sendState.set('sending');
-    this.api.sendMessage(this.form.getRawValue()).subscribe({
-      next: () => { this.sendState.set('sent'); this.form.reset(); },
-      error: () => this.sendState.set('error'),
-    });
-  }
 }

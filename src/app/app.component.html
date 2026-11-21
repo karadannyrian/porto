@@ -80,38 +80,6 @@
     </dl>
   </section>
 
-  <!-- <section id="contact" aria-labelledby="contact-h">
-    <h2 id="contact-h">Start a conversation</h2>
-    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-      <label>Your name
-        <input formControlName="name" autocomplete="name" />
-        @if (form.controls.name.touched && form.controls.name.invalid) {
-        <span class="err">Enter your name.</span>
-        }
-      </label>
-      <label>Email
-        <input type="email" formControlName="email" autocomplete="email" />
-        @if (form.controls.email.touched && form.controls.email.invalid) {
-        <span class="err">Enter a valid email address.</span>
-        }
-      </label>
-      <label>Message
-        <textarea rows="5" formControlName="message"></textarea>
-        @if (form.controls.message.touched && form.controls.message.invalid) {
-        <span class="err">Write at least 10 characters.</span>
-        }
-      </label>
-      <button type="submit" [disabled]="sendState() === 'sending'">
-        {{ sendState() === 'sending' ? 'Sending…' : 'Send message' }}
-      </button>
-      <p class="feedback" role="status" aria-live="polite">
-        @switch (sendState()) {
-        @case ('sent') { Message sent. I'll reply within two working days. }
-        @case ('error') { Couldn't send. Check that the API is running, then try again. }
-        }
-      </p>
-    </form>
-  </section> -->
 </main>
 
 <footer>
